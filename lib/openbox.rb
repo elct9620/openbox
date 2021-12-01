@@ -20,7 +20,12 @@ module Openbox
     return @runtime if @runtime
 
     LOCK.synchronize do
-      @runtime ||= Runtime.new
+      dependencies = if defined?(Bundler)
+                       Bundler.definition.current_dependencies
+                     else
+                       []
+                     end
+      @runtime ||= Runtime.new(dependencies)
     end
   end
 

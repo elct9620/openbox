@@ -7,6 +7,13 @@ module Openbox
   #
   # @since 0.1.0
   class Runtime
+    # @param dependencies [Array<Bundler::Dependency>]
+    #
+    # @since 0.1.0
+    def initialize(dependencies = [])
+      @dependencies = dependencies
+    end
+
     # Check for Rails environment
     #
     # @return [TrueClass|FalseClass]
@@ -22,9 +29,7 @@ module Openbox
     #
     # @since 0.1.0
     def select(*names)
-      Bundler
-        .definition
-        .current_dependencies
+      @dependencies
         .select { |dep| names.include?(dep.name) && (dep.groups & groups).any? }
     end
 

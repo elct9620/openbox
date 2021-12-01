@@ -3,7 +3,6 @@
 require_relative 'openbox/version'
 require_relative 'openbox/database'
 require_relative 'openbox/runtime'
-require_relative 'openbox/command'
 
 # The tool to build Ruby container easier
 #
@@ -39,4 +38,6 @@ module Openbox
       @database ||= Database.new
     end
   end
+
+  require_relative 'openbox/command'
 end

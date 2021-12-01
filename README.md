@@ -1,5 +1,7 @@
 # Openbox
 
+![main branch](https://github.com/elct9620/openbox/actions/workflows/main.yml/badge.svg?branch=main)
+
 The zero-configuration Ruby container entry-point.
 
 ## Installation
@@ -33,8 +35,19 @@ CMD ["server"]
 
 * [ ] `config/openbox.rb` config
 * [ ] Customize command
-* [ ] Rake Task support
-  * [ ] Rails capability
+* [x] Database connection check
+  * [x] PostgreSQL support
+  * [x] MySQL support
+* [x] Run Web Server
+  * [x] `rails server`
+  * [x] `rackup -o 0.0.0.0`
+* [x] Rake Task support
+* [x] Sidekiq support
+* [x] Rails capability
+  * [x] `openbox console` to `rails console`
+  * [x] `openbox migrate` to `rails db:migrate`
+  * [x] `openbox seed` to `rails db:seed`
+
 
 ## Development
 

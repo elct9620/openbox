@@ -4,4 +4,4 @@
 
 require 'openbox'
 
-Openbox::Command.start(ARGV)
+Openbox::Entrypoint.start(ARGV)

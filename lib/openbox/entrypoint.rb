@@ -7,7 +7,7 @@ module Openbox
   # The Container Entrypoint
   #
   # @since 0.1.0
-  class Command < Thor
+  class Entrypoint < Thor
     if Openbox.runtime.has?('rails', 'rack')
       # @since 0.1.0
       desc 'server', 'Start Application Server'

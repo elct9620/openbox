@@ -39,5 +39,5 @@ module Openbox
     end
   end
 
-  require_relative 'openbox/command'
+  require_relative 'openbox/entrypoint'
 end

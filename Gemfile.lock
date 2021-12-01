@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    openbox (0.1.0)
+    openbox (0.2.0)
       thor (~> 1.0)
 
 GEM

@@ -16,5 +16,9 @@ module Openbox
 
     require 'openbox/commands/server'
     require 'openbox/commands/rake'
+    require 'openbox/commands/migrate'
+    require 'openbox/commands/seed'
+    require 'openbox/commands/console'
+    require 'openbox/commands/sidekiq'
   end
 end

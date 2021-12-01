@@ -22,11 +22,10 @@ module Openbox
     #
     # @since 0.1.0
     def select(*names)
-      # TODO: Select depend on RAILS_ENV or RACK_ENV
       Bundler
         .definition
         .current_dependencies
-        .select { |dep| names.include?(dep.name) && dep.groups.include?(:default) }
+        .select { |dep| names.include?(dep.name) && (dep.groups & groups).any? }
     end
 
     # Check for rubygmes exists
@@ -36,6 +35,15 @@ module Openbox
     # @since 0.1.0
     def has?(*names)
       select(*names).any?
+    end
+
+    # Groups to detect
+    #
+    # @return [Array<Symbol>]
+    #
+    # @since 0.1.0
+    def groups
+      @groups ||= [:default, ENV['RAILS_ENV'], ENV['RACK_ENV']].compact.map(&:to_sym)
     end
   end
 end

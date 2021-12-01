@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['蒼時弦也']
   spec.email         = ['contact@frost.tw']
 
-  spec.summary       = 'The tool to build Ruby container easier'
-  spec.description   = 'The tool to build Ruby container easier'
+  spec.summary       = 'The zero-configuration Ruby container entry-point.'
+  spec.description   = 'The zero-configuration Ruby container entry-point.'
   spec.homepage      = 'https://github.com/elct9620/openbox'
   spec.required_ruby_version = '>= 2.5.0'
 

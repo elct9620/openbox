@@ -1,6 +1,6 @@
 # Openbox
 
-The tool to build Ruby container easier.
+The zero-configuration Ruby container entry-point.
 
 ## Installation
 
@@ -14,13 +14,27 @@ And then execute:
 
     $ bundle install
 
-Or install it yourself as:
-
-    $ gem install openbox
-
 ## Usage
 
-TODO: Write usage instructions here
+Create `openbox` binstus to allow container use it as entrypoint
+
+```bash
+bundle binstubs openbox
+```
+
+Modify your `Dockerfile` to use it as `entrypoint`
+
+```dockerfile
+ENTRYPOINT ["bin/openbox"]
+CMD ["server"]
+```
+
+## Roadmap
+
+* [ ] `config/openbox.rb` config
+* [ ] Customize command
+* [ ] Rake Task support
+  * [ ] Rails capability
 
 ## Development
 

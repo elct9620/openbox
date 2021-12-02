@@ -31,6 +31,19 @@ ENTRYPOINT ["bin/openbox"]
 CMD ["server"]
 ```
 
+### Commands
+
+The commands are pre-defined for the Rack and Rails applications.
+
+| Name      | Enabled Condition | Description              |
+|-----------|-------------------|--------------------------|
+| `server`  | `rails` or `rack` | Start application server |
+| `rake`    | `rails` or `rake` | Run rake tasks           |
+| `console` | `rails`           | Start rails console      |
+| `migrate` | `rails`           | Run database migration   |
+| `seed`    | `rails`           | Run database seed        |
+| `sidekiq` | `sidekiq`         | Run sidekiq server       |
+
 ## Roadmap
 
 * [ ] `config/openbox.rb` config

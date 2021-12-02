@@ -44,6 +44,13 @@ The commands are pre-defined for the Rack and Rails applications.
 | `seed`    | `rails`           | Run database seed        |
 | `sidekiq` | `sidekiq`         | Run sidekiq server       |
 
+### Environments
+
+| Name             | Description                                                                          |
+|------------------|--------------------------------------------------------------------------------------|
+| `AUTO_MIGRATION` | When present, the `migrate` will run before `server` started                         |
+| `DATABASE_URL`   | When `pg` or `mysql2` gem present, Openbox will use it to ensure database connection |
+
 ## Roadmap
 
 * [ ] `config/openbox.rb` config
@@ -60,6 +67,7 @@ The commands are pre-defined for the Rack and Rails applications.
   * [x] `openbox console` to `rails console`
   * [x] `openbox migrate` to `rails db:migrate`
   * [x] `openbox seed` to `rails db:seed`
+  * [x] Use `AUTO_MIGRATION` to run migration before server started
 
 
 ## Development

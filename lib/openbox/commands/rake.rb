@@ -12,7 +12,7 @@ module Openbox
       # @since 0.1.0
       def execute
         Openbox.database.ensure_connection!
-        exec("bundle exec rake #{args}")
+        exec("bundle exec rake #{args.join(' ')}")
       end
     end
 

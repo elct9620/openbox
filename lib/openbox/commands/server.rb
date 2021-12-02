@@ -12,6 +12,7 @@ module Openbox
       # @since 0.1.0
       def execute
         Openbox.database.ensure_connection!
+        invoke Migrate unless ENV['AUTO_MIGRATION'].nil?
         return exec('bundle exec rails server') if Openbox.runtime.rails?
 
         exec('bundle exec rackup -o 0.0.0.0')

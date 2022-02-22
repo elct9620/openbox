@@ -51,10 +51,29 @@ The commands are pre-defined for the Rack and Rails applications.
 | `AUTO_MIGRATION` | When present, the `migrate` will run before `server` started                         |
 | `DATABASE_URL`   | When `pg` or `mysql2` gem present, Openbox will use it to ensure database connection |
 
+### Customize Commands
+
+When `openbox` execute, the `lib/openbox/commands/*/**.rb` will be scanned and require before started.
+We can register new command by adding files to `lib/openbox/commands` directory.
+
+```ruby
+# lib/openbox/commands/daemon.rb
+
+class Daemon < Openbox::Command
+  def execute
+    exec('bundle exec my-daemon')
+  end
+end
+
+Openbox::Entrypoint.register Daemon, :daemon, :daemon, 'Run a daemon'
+```
+
+> The Rails are not loaded to speed up bootstrap, if you need Rails please load by yourself.
+
 ## Roadmap
 
 * [ ] `config/openbox.rb` config
-* [ ] Customize command
+* [x] Customize command
 * [x] Database connection check
   * [x] PostgreSQL support
   * [x] MySQL support

@@ -4,4 +4,14 @@
 
 require 'openbox'
 
+CUSTOMIZE_COMMAND_ROOT = if defined?(Bundler)
+                           Bundler.root.join('lib/openbox/commands')
+                         else
+                           Pathname.new(Dir.pwd).join('lib/openbox/commands')
+                         end
+
+CUSTOMIZE_COMMAND_ROOT.glob('**/*.rb') do |command|
+  require command
+end
+
 Openbox::Entrypoint.start(ARGV)

@@ -44,14 +44,7 @@ The commands are pre-defined for the Rack and Rails applications.
 | `seed`    | `rails`           | Run database seed        |
 | `sidekiq` | `sidekiq`         | Run sidekiq server       |
 
-### Environments
-
-| Name             | Description                                                                          |
-|------------------|--------------------------------------------------------------------------------------|
-| `AUTO_MIGRATION` | When present, the `migrate` will run before `server` started                         |
-| `DATABASE_URL`   | When `pg` or `mysql2` gem present, Openbox will use it to ensure database connection |
-
-### Customize Commands
+#### Customize Commands
 
 When `openbox` execute, the `lib/openbox/commands/*/**.rb` will be scanned and require before started.
 We can register new command by adding files to `lib/openbox/commands` directory.
@@ -70,6 +63,33 @@ Openbox::Entrypoint.register Daemon, :daemon, :daemon, 'Run a daemon'
 
 > The Rails are not loaded to speed up bootstrap, if you need Rails please load by yourself.
 
+### Environments
+
+| Name             | Example                                | Description                                                                          |
+|------------------|----------------------------------------|--------------------------------------------------------------------------------------|
+| `AUTO_MIGRATION` | `yes`                                  | When present, the `migrate` will run before `server` started                         |
+| `DATABASE_URL`   | `postgres://user:pass@postgres/dbname` | When `pg` or `mysql2` gem present, Openbox will use it to ensure database connection |
+| `SWARM_SECRETS`  | `app-env`                              | List the Docker Swarm secret names to load as environment file                       |
+
+## Environment Loader
+
+To rotate secrets easier, we may not use Rails credentials but inject secrets via the environment variables.
+
+Openbox provides a before hook before the command is executed and load the environments from a security source.
+
+### Docker Swarm
+
+When use Docker Swarm, the secret will put into `/run/secrets` directory, you can load these files via Dotenv.
+
+```yaml
+# Docker Swarm Stack
+services:
+  application:
+    environment:
+      - SWARM_SECRETS=sahred-secret,applicate-secret
+    # ...
+```
+
 ## Roadmap
 
 * [ ] `config/openbox.rb` config
@@ -87,7 +107,10 @@ Openbox::Entrypoint.register Daemon, :daemon, :daemon, 'Run a daemon'
   * [x] `openbox migrate` to `rails db:migrate`
   * [x] `openbox seed` to `rails db:seed`
   * [x] Use `AUTO_MIGRATION` to run migration before server started
-
+* [ ] Load Secrets as Environment
+  * [ ] AWS Secrets Manager
+  * [ ] Hashicorp Valut
+  * [ ] Docker Swarm Secrets
 
 ## Development
 

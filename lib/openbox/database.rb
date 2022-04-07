@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'timeout'
+require 'uri'
 
 module Openbox
   # The database helper

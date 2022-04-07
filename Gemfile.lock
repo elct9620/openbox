@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    openbox (0.5.0)
+    openbox (0.5.1)
       dotenv
       thor (~> 1.0)
 

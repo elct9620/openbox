@@ -48,7 +48,7 @@ module Openbox
     #
     # @since 0.1.0
     def groups
-      @groups ||= [:default, ENV['RAILS_ENV'], ENV['RACK_ENV']].compact.map(&:to_sym)
+      @groups ||= [:default, ENV.fetch('RAILS_ENV', nil), ENV.fetch('RACK_ENV', nil)].compact.map(&:to_sym)
     end
   end
 end

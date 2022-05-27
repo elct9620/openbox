@@ -42,7 +42,7 @@ module Openbox
       require 'pg'
 
       retry_in(timeout: 30) do
-        PG.connect(ENV['DATABASE_URL'])
+        PG.connect(ENV.fetch('DATABASE_URL', nil))
       end
     end
 
@@ -50,7 +50,7 @@ module Openbox
     def connect_mysql2
       require 'mysql2'
 
-      uri = URI.parse(ENV['DATABASE_URL'])
+      uri = URI.parse(ENV.fetch('DATABASE_URL', nil))
       username, password = uri.userinfo.split(':', 2)
       connect_attrs = URI.decode_www_form(uri.query || '').to_h
       retry_in(timeout: 30) do

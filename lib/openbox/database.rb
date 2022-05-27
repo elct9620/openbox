@@ -52,10 +52,11 @@ module Openbox
 
       uri = URI.parse(ENV['DATABASE_URL'])
       username, password = uri.userinfo.split(':', 2)
+      port = uri.port || 3306
       connect_attrs = URI.decode_www_form(uri.query || '').to_h
       retry_in(timeout: 30) do
         Mysql2::Client.new(username: username, password: password, host: uri.host,
-                           database: uri.path[1..-1], connect_attrs: connect_attrs)
+                           database: uri.path[1..-1], port: port, connect_attrs: connect_attrs)
       end
     end
 

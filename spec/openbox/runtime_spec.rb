@@ -10,8 +10,8 @@ RSpec.describe Openbox::Runtime do
 
     context 'when RAILS_ENV is production' do
       before do
-        allow(ENV).to receive(:[]).with(anything)
-        allow(ENV).to receive(:[]).with('RAILS_ENV').and_return('production')
+        allow(ENV).to receive(:fetch).with(anything, nil)
+        allow(ENV).to receive(:fetch).with('RAILS_ENV', nil).and_return('production')
       end
 
       it { is_expected.to include(:production) }
@@ -19,8 +19,8 @@ RSpec.describe Openbox::Runtime do
 
     context 'when RACK_ENV is development' do
       before do
-        allow(ENV).to receive(:[]).with(anything)
-        allow(ENV).to receive(:[]).with('RACK_ENV').and_return('development')
+        allow(ENV).to receive(:fetch).with(anything, nil)
+        allow(ENV).to receive(:fetch).with('RACK_ENV', nil).and_return('development')
       end
 
       it { is_expected.to include(:development) }

@@ -63,7 +63,9 @@ module Openbox
     def retry_in(timeout: 30)
       Timeout.timeout(timeout) do
         yield
-      rescue StandardError
+      rescue StandardError => error
+        puts error
+        puts "retry..."
         sleep 1
         retry
       end
